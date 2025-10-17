@@ -1,0 +1,11 @@
+Age,Salary,Gender,City,Purchased
+25,3000,Masculino,São Paulo,0
+30,4000,Feminino,Rio de Janeiro,1
+35,5000,Masculino,Belo Horizonte,0
+40,6000,Feminino,São Paulo,1
+45,7000,Masculino,Rio de Janeiro,0
+50,8000,Feminino,Belo Horizonte,1
+23,2500,Masculino,São Paulo,0
+33,4500,Feminino,Rio de Janeiro,1
+38,5500,Masculino,Belo Horizonte,0
+48,7500,Feminino,São Paulo,1

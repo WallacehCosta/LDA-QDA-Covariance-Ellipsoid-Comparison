@@ -55,7 +55,7 @@ class DiscriminantAnalysisDemo:
         covariance_shared = np.array([[0.5, -0.2], [0.8, 0.5]])
         X_shared, y_shared = self._make_data(
             n_samples=n_samples_shared, n_features=2,
-            cov_class_1=covariance_shared, cov_class_2=covariance_shared, seed=1,  # Changed seed
+            cov_class_1=covariance_shared, cov_class_2=covariance_shared, seed=1,
         )
 
         # 3. Different Covariances (Non-Shared)
@@ -63,7 +63,7 @@ class DiscriminantAnalysisDemo:
         cov_c2_diff = cov_c1_diff.T  # Transpose for symmetry demo
         X_diff, y_diff = self._make_data(
             n_samples=n_samples_shared, n_features=2,
-            cov_class_1=cov_c1_diff, cov_class_2=cov_c2_diff, seed=2,  # Changed seed
+            cov_class_1=cov_c1_diff, cov_class_2=cov_c2_diff, seed=2,
         )
 
         return [
@@ -87,8 +87,8 @@ class DiscriminantAnalysisDemo:
             2 * v[1] ** 0.5,
             angle=angle,  # Simplified angle calculation for ellipse
             facecolor=color,
-            edgecolor="#1A1A1A",  # Darker, unique edge color
-            linewidth=1.5,  # Slightly thinner line
+            edgecolor="#1A1A1A",
+            linewidth=1.5,
             label=label
         )
         ell.set_clip_box(ax.bbox)
@@ -99,7 +99,7 @@ class DiscriminantAnalysisDemo:
         """Plots classifier results with custom style for decision boundary and samples."""
 
         # Custom color map for samples
-        cmap_samples = colors.ListedColormap(["#E63946", "#457B9D"])  # Custom Red/Blue
+        cmap_samples = colors.ListedColormap(["#E63946", "#457B9D"])  # Red/Blue
 
         # 1. Probability Background Fill
         DecisionBoundaryDisplay.from_estimator(
@@ -108,7 +108,7 @@ class DiscriminantAnalysisDemo:
             response_method="predict_proba",
             plot_method="pcolormesh",
             ax=ax,
-            cmap="coolwarm",  # Changed color map for background
+            cmap="coolwarm",
             alpha=0.25,
         )
 
@@ -119,10 +119,10 @@ class DiscriminantAnalysisDemo:
             response_method="predict_proba",
             plot_method="contour",
             ax=ax,
-            colors="k",  # Black contour line
+            colors="k",
             alpha=0.9,
             levels=[0.5],
-            linestyles=['--']  # Dashed line style
+            linestyles=['--']
         )
 
         # 3. Sample Points
@@ -151,9 +151,9 @@ class DiscriminantAnalysisDemo:
         ax.scatter(
             estimator.means_[:, 0],
             estimator.means_[:, 1],
-            c=["#F7A072", "#4895EF"],  # Custom colors for means
+            c=["#F7A072", "#4895EF"],
             s=250,
-            marker="D",  # Diamond marker instead of star
+            marker="D",
             edgecolor="black",
             zorder=3  # Ensures means are plotted above all other elements
         )
@@ -176,7 +176,6 @@ class DiscriminantAnalysisDemo:
     def run_demo(self):
         """Runs the training and plots the comparison figure."""
 
-        # Ajusta o tamanho da figura para dar mais espaço, se necessário.
         fig, axs = plt.subplots(nrows=3, ncols=2, sharex="row", sharey="row", figsize=(10, 15))
 
         # Initialize the estimators
@@ -189,7 +188,6 @@ class DiscriminantAnalysisDemo:
             # LDA Column
             lda.fit(X, y)
             self._plot_result(lda, X, y, ax_row[0])
-            # *** SOLUÇÃO 1: Reduzir o tamanho da fonte do ylabel para evitar cortes. ***
             ax_row[0].set_ylabel(title, fontsize=10, fontweight='bold')
 
             # QDA Column
@@ -210,11 +208,9 @@ class DiscriminantAnalysisDemo:
         # Add an overall aesthetic touch (subtly grey background)
         fig.patch.set_facecolor('#f5f5f5')
 
-        # *** SOLUÇÃO 2: Ajustar o layout para incluir mais espaço na lateral esquerda (rect[0]) ***
         # rect=[left, bottom, right, top] -> Aumentamos a margem esquerda (left=0.08)
         plt.tight_layout(rect=[0.08, 0.03, 1, 0.95])
         plt.show()
-
 
 # --- Execution Block ---
 if __name__ == "__main__":
