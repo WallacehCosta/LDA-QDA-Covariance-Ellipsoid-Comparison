@@ -62,3 +62,6 @@ source .venv/bin/activate  # Linux/Mac
 
 # Install required packages
 pip install numpy matplotlib scikit-learn
+```
+---
+Contact email: holandawallacecosta@gmail.com
